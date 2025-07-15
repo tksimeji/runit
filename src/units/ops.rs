@@ -1,10 +1,13 @@
 use std::ops::Div;
-use super::types::{Meter, Second, MeterPerSecond};
+use crate::units::quantity::Quantity;
 
-impl Div<Second> for Meter {
-  type Output = MeterPerSecond;
-
-  fn div(self, rhs: Second) -> Self::Output {
-    MeterPerSecond(self.0 / rhs.0)
+impl<T> Div for Quantity<T> where T: Copy + Div<Output = T> {
+  type Output = Quantity<T>;
+  
+  fn div(self, rhs: Quantity<T>) -> Quantity<T> {
+    Quantity {
+      value: self.value / rhs.value,
+      unit: self.unit.div(&rhs.unit),
+    }
   }
 }
