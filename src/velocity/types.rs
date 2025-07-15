@@ -11,9 +11,17 @@ impl <T: fmt::Display> fmt::Display for KilometerPerHour<T> {
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct MeterPerSecond<T>(pub T);
-
 impl<T: fmt::Display> fmt::Display for MeterPerSecond<T> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{} m/s", self.0)
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct MillimeterPerSecond<T>(pub T);
+
+impl<T: fmt::Display> fmt::Display for MillimeterPerSecond<T> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{} mm/s", self.0)
     }
 }

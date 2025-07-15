@@ -20,6 +20,15 @@ impl <T: fmt::Display> fmt::Display for Meter<T> {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Centimeter<T>(pub T);
+
+impl <T: fmt::Display> fmt::Display for Centimeter<T> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        write!(f, "{} cm", self.0)
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Millimeter<T>(pub T);
 
 impl <T: fmt::Display> fmt::Display for Millimeter<T> {
